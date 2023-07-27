@@ -1,33 +1,11 @@
-result = 0
-operand = 0
-operator = '+'
-wait_for_number = True
+def total(a=5, *golova, **phone_book):
+    print('a', a)
+    # проход по всем элементам кортежа
+    for single_item in golova:
+        print('single_item', single_item)
 
-while True:
-    if wait_for_number == True:
-        in_operand = input("Enter number: ")
-        if in_operand.replace('.', '').replace(',', '').isdigit():
-            operand = float(in_operand)
-            expression = f"{result} {operator} {operand}"
-            try:
-                result = eval(expression)
-            except ZeroDivisionError:
-                print("Zero Division Error. Try again")
-                continue
-            else:
-                wait_for_number = False
-        else:
-            print(f"{in_operand} is not a number. Try again.")
-            continue
-    else:
-        in_operator = input("Enter operator(+,-,*,/,=): ")
-        if in_operator in ['=']:
-            print(f'Result: {result}')
-            break
-        elif in_operator in ['+','-','*','/']:
-            operator = in_operator
-            wait_for_number = True
-        else:
-            print(f"{in_operator} is not operator(+,-,*,/,=). Try again.")
-            continue
-            
+    #проход по всем элементам словаря
+    for first_part, second_part in phone_book.items():
+        print(first_part,second_part)
+
+print(total(10, 1, 2, 3, 4, Jack=1123, John=2231, Inge=1560))
